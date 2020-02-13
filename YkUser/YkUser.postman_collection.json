@@ -1,0 +1,51 @@
+{
+	"info": {
+		"_postman_id": "a2560e16-1c30-44ee-a262-231930a7c9f3",
+		"name": "YkUser",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authenticate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Id\":\"1001\",\n    \"Password\":\"!@#$%^&*(\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44363/api/authenticate",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44363",
+					"path": [
+						"api",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	]
+}
