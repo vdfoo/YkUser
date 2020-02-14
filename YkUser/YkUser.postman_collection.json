@@ -42,7 +42,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "{{host}}api/authenticate",
+					"host": [
+						"{{host}}api"
+					],
+					"path": [
+						"authenticate"
+					]
 				}
 			},
 			"response": []
