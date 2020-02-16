@@ -19,17 +19,14 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"Id\":\"1001\",\n    \"Password\":\"!@#$%^&*(\"\n}"
+					"raw": "{\n    \"Id\":\"1001\",\n    \"Password\":\"p1001\"\n}"
 				},
 				"url": {
-					"raw": "https://localhost:44363/api/authenticate",
-					"protocol": "https",
+					"raw": "{{host}}api/authenticate",
 					"host": [
-						"localhost"
+						"{{host}}api"
 					],
-					"port": "44363",
 					"path": [
-						"api",
 						"authenticate"
 					]
 				}

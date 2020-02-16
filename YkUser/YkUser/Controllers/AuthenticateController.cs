@@ -19,35 +19,55 @@ namespace YkUser.Controllers
             return new string[] { "value1", "value2", "value3" };
         }
 
-        // GET: api/Authenticate/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
         // POST: api/Authenticate
         [HttpPost]
         public User Post([FromBody] User user)
         {
-            return new User
+            User invalidUser = new User()
             {
-                Id = user.Id,
-                Admin = true,
-                Name = "Daniel - Authenticated"
+                Name = "Unauthorized Access"
             };
-        }
 
-        // PUT: api/Authenticate/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+            if(string.IsNullOrEmpty(user.Id) || string.IsNullOrEmpty(user.Password))
+            {
+                return invalidUser;
+            }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            User authenticatedUser = new User();
+
+            if (user.Id == "1001" && user.Password == "p1001")
+            {
+                authenticatedUser = new User
+                {
+                    Id = user.Id,
+                    Admin = true,
+                    Name = "Daniel - Authenticated"
+                };
+            }  
+            else if (user.Id == "1002" && user.Password == "p1002")
+            {
+                authenticatedUser = new User
+                {
+                    Id = user.Id,
+                    Admin = false,
+                    Name = "Sebastian - Authenticated"
+                };
+            }
+            else if (user.Id == "1003" && user.Password == "p1003")
+            {
+                authenticatedUser = new User
+                {
+                    Id = user.Id,
+                    Admin = false,
+                    Name = "Kelvin - Authenticated"
+                };
+            }
+            else
+            {
+                authenticatedUser = invalidUser;
+            }
+
+            return authenticatedUser;
         }
     }
 }
