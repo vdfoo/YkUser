@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using YkUser.Utility;
 
 namespace YkUser
 {
@@ -27,18 +28,10 @@ namespace YkUser
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowSpecificOrigin",
-                    builder => builder.WithOrigins("*").
-                    AllowAnyHeader().AllowAnyMethod()
-                    );
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IConfiguration configuration)
         {
             if (env.IsDevelopment())
             {
@@ -55,6 +48,8 @@ namespace YkUser
             {
                 endpoints.MapControllers();
             });
+
+            Constant.ConnectionString = configuration.GetConnectionString("YkTextileDb");
         }
     }
 }

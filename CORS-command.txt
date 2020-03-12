@@ -1,0 +1,6 @@
+az resource update --name web --resource-group Development --namespace Microsoft.Web --resource-type config --parent sites/ykcalculator-dev --set properties.cors.allowedOrigins="['http://localhost:3001']" --api-version 2015-06-01
+
+az resource update --name web --resource-group Development --namespace Microsoft.Web --resource-type config --parent sites/ykcalculator-dev --set properties.cors.allowedOrigins="['*']" --api-version 2015-06-01
+
+https://docs.microsoft.com/en-us/azure/app-service/app-service-web-tutorial-rest-api
+You can set more than one client URL in properties.cors.allowedOrigins ("['URL1','URL2',...]"). You can also enable all client URLs with "['*']".

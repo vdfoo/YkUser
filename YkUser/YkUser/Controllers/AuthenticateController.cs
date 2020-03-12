@@ -28,36 +28,36 @@ namespace YkUser.Controllers
                 Name = "Unauthorized Access"
             };
 
-            if(string.IsNullOrEmpty(user.Id) || string.IsNullOrEmpty(user.Password))
+            if(string.IsNullOrEmpty(user.Username) || string.IsNullOrEmpty(user.Password))
             {
                 return invalidUser;
             }
 
             User authenticatedUser = new User();
 
-            if (user.Id == "1001" && user.Password == "p1001")
+            if (user.Username == "1001" && user.Password == "p1001")
             {
                 authenticatedUser = new User
                 {
-                    Id = user.Id,
+                    Username = user.Username,
                     Admin = true,
                     Name = "Daniel - Authenticated"
                 };
             }  
-            else if (user.Id == "1002" && user.Password == "p1002")
+            else if (user.Username == "1002" && user.Password == "p1002")
             {
                 authenticatedUser = new User
                 {
-                    Id = user.Id,
+                    Username = user.Username,
                     Admin = false,
                     Name = "Sebastian - Authenticated"
                 };
             }
-            else if (user.Id == "1003" && user.Password == "p1003")
+            else if (user.Username == "1003" && user.Password == "p1003")
             {
                 authenticatedUser = new User
                 {
-                    Id = user.Id,
+                    Username = user.Username,
                     Admin = false,
                     Name = "Kelvin - Authenticated"
                 };
