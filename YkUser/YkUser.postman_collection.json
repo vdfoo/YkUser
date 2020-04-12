@@ -1,12 +1,24 @@
 {
 	"info": {
-		"_postman_id": "a2560e16-1c30-44ee-a262-231930a7c9f3",
+		"_postman_id": "41942ce4-121e-48f8-abee-33d3ba046ee6",
 		"name": "YkUser",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Authenticate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "97d3c0c8-3767-4351-aa2e-bb1a2573cb14",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -19,7 +31,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"Id\":\"1001\",\n    \"Password\":\"p1001\"\n}"
+					"raw": ""
 				},
 				"url": {
 					"raw": "{{host}}api/authenticate",
@@ -34,21 +46,203 @@
 			"response": []
 		},
 		{
-			"name": "Authenticate Test",
+			"name": "Health Check",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f59c27b6-82a9-4a57-87ce-de9d79687b31",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{host}}api/authenticate",
+					"raw": "{{host}}api/HealthCheck",
 					"host": [
 						"{{host}}api"
 					],
 					"path": [
-						"authenticate"
+						"HealthCheck"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Health Check - database",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8b0e8224-0f3e-49dc-8808-4b3364f04170",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}api/HealthCheck/1",
+					"host": [
+						"{{host}}api"
+					],
+					"path": [
+						"HealthCheck",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User - Add",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ce091ddd-dee3-483b-a3f1-d9e466814f72",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}api/User",
+					"host": [
+						"{{host}}api"
+					],
+					"path": [
+						"User"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User - Read All",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f7ea5df9-3735-4941-adb9-11839b3c6b83",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}api/User",
+					"host": [
+						"{{host}}api"
+					],
+					"path": [
+						"User"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User - Read By Username",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d304fded-5cbc-44e0-95e6-ac1e973a0ac5",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}api/User/3002",
+					"host": [
+						"{{host}}api"
+					],
+					"path": [
+						"User",
+						"3002"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User - Update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f5fc5051-954c-4886-9b29-3c1cd48befbf",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}api/User",
+					"host": [
+						"{{host}}api"
+					],
+					"path": [
+						"User"
 					]
 				}
 			},
 			"response": []
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
