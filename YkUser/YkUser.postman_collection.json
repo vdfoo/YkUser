@@ -31,7 +31,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "{\r\n\t\"username\": \"daniel\",\r\n    \"password\": \"p10021\"\r\n}"
 				},
 				"url": {
 					"raw": "{{host}}api/authenticate",
@@ -75,36 +75,6 @@
 			"response": []
 		},
 		{
-			"name": "Health Check - database",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "8b0e8224-0f3e-49dc-8808-4b3364f04170",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}api/HealthCheck/1",
-					"host": [
-						"{{host}}api"
-					],
-					"path": [
-						"HealthCheck",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "User - Add",
 			"event": [
 				{
@@ -130,7 +100,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "{\r\n\t\"username\": \"daniel\",\r\n    \"name\": \"Daniel Foo\",\r\n    \"admin\": true,\r\n    \"password\": \"p1002\"\r\n}"
 				},
 				"url": {
 					"raw": "{{host}}api/User",
@@ -229,7 +199,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "    {\r\n        \"username\": \"daniel\",\r\n        \"name\": \"Daniel Foo\",\r\n        \"admin\": true,\r\n        \"password\": \"pp1002\"\r\n    }"
 				},
 				"url": {
 					"raw": "{{host}}api/User",
