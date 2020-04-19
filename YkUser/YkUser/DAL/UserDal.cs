@@ -33,12 +33,13 @@ namespace YkUser.DAL
         {
             using (SqlConnection connection = new SqlConnection(Constant.ConnectionString))
             {
-                string sql = "UPDATE UserDetail SET Password = @Password, Name = @Name WHERE Username = @Username";
+                string sql = "UPDATE UserDetail SET Password = @Password, Name = @Name, Admin = @IsAdmin WHERE Username = @Username";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@Username", user.Username);
                     command.Parameters.AddWithValue("@Password", user.Password);
                     command.Parameters.AddWithValue("@Name", user.Name);
+                    command.Parameters.AddWithValue("@IsAdmin", user.Admin);
                     connection.Open();
                     command.ExecuteNonQuery();
                     connection.Close();
