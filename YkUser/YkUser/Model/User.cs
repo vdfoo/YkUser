@@ -11,5 +11,6 @@ namespace YkUser.Model
         public string Name { get; set; }
         public bool Admin { get; set; }
         public string Password { get; set; }
+        public bool Authenticated { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using YkUser.Model;
+using YkUser.Service;
 
 namespace YkUser.Controllers
 {
@@ -23,51 +24,30 @@ namespace YkUser.Controllers
         [HttpPost]
         public User Post([FromBody] User user)
         {
-            User invalidUser = new User()
+            User unauthorizedUser = new User()
             {
                 Name = "Unauthorized Access"
             };
 
+            // Validation
             if(string.IsNullOrEmpty(user.Username) || string.IsNullOrEmpty(user.Password))
             {
-                return invalidUser;
+                return unauthorizedUser;
             }
 
-            User authenticatedUser = new User();
-
-            if (user.Username == "1001" && user.Password == "p1001")
+            // Authentication
+            Authentication authentication = new Authentication();
+            User authenticatedUser = authentication.AuthenticationUser(user);
+            
+            // Assert and return
+            if(authenticatedUser.Authenticated)
             {
-                authenticatedUser = new User
-                {
-                    Username = user.Username,
-                    Admin = true,
-                    Name = "Daniel - Authenticated"
-                };
-            }  
-            else if (user.Username == "1002" && user.Password == "p1002")
-            {
-                authenticatedUser = new User
-                {
-                    Username = user.Username,
-                    Admin = false,
-                    Name = "Sebastian - Authenticated"
-                };
-            }
-            else if (user.Username == "1003" && user.Password == "p1003")
-            {
-                authenticatedUser = new User
-                {
-                    Username = user.Username,
-                    Admin = false,
-                    Name = "Kelvin - Authenticated"
-                };
+                return authenticatedUser;
             }
             else
             {
-                authenticatedUser = invalidUser;
+                return unauthorizedUser;
             }
-
-            return authenticatedUser;
         }
     }
 }
